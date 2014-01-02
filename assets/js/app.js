@@ -69,3 +69,10 @@
   window.io
 
 );
+
+
+window.ontradableload = function() {
+  alert("Tradable loaded");
+}
+
+
