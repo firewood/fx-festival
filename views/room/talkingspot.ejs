@@ -30,5 +30,15 @@ $(function(){
     socket.post('/chat/say', {'chatterId':<%= id %>, 'message':$('#message').val()},function(res){});
     $('#message').val('');
   });
+
+  window.log = function(obj) {
+    socket.post('/dump', obj, function(res){});
+  };
+
+
+  log({'msg':'debug'});
+  log('string test');
+
+
 });
 </script>
