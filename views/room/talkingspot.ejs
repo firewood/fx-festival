@@ -1,9 +1,31 @@
 
 <link href='/styles/main.css' rel='stylesheet'/>
 
+
+
 <div id="infobar">
   <div id="infobar01">
     <p>Your ID: <%= id %></p>
+  </div>
+  <div id="news_bar">
+    <section class="slider">
+      <div class="flexslider">
+        <ul class="slides">
+          <li>
+            カイルくんウザい
+          </li>
+          <li>
+            カイルくんの転職先が判明
+          </li>
+          <li>
+            カイルくん海にカエル
+          </li>
+          <li>
+            カイルくんを消す方法が判明
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
   <div id="infobar02">
     <div id="infobox">
@@ -197,8 +219,27 @@
 <div id="movebar">
   <p>操作バー</p>
   <div class="output">
+    <div id="panel" class="widget">
+      <input type="button" value="AA0">
+      <input type="button" value="AA1">
+      <input type="button" value="AA2">
+      <div id="AABox" style="display:none;">
+        <textarea name="AA0" readonly>クリックで出る</textarea>
+        <textarea name="AA1" readonly>poyo
+poyo
+poyo</textarea>
+        <textarea name="AA2" readonly>poyo
+poyo
+poyo</textarea>
+      </div>
+      <div id="AAForm" style="display:none;">
+        <textarea name="custom" id="custom">好きなAA
+クリックで編集
+ダブルクリックで追加</textarea>
+      </div>
     <input type="text" id="message" size="50">
     <input type="button" id="send" value="コメント">
+   </div>
   </div>
   
   <p>&nbsp;</p>
@@ -222,6 +263,7 @@ function add_marquee(comment) {
   var pos = Math.floor(Math.random() * 20 + 80);
   var speed = Math.floor(Math.random() * 6 + 3);
   var id = 'mq_' + (++mq_seq);
+  comment = comment.replace(/\n/g, "<br />");
   main_box.append('<marquee scrollamount="' + speed + '" id="' + id + '" class="left_to_right" loop="1" style="top:' + pos + 'px;">' + comment + '</marquee>');
   setTimeout(function() {
     $('#'+id).remove();
@@ -239,10 +281,37 @@ $(function() {
     } else if (model == 'chat') {
       var id = msg['data']['id'];
       var message = msg['data']['message'];
-      add_comment('' + id + ':' + message);
+      message.split('\n').forEach(function(line){
+        add_comment('' + id + ':' + line);
+      });
       add_marquee(message);
     }
   });
+
+var postAA = 
+function() {
+    var name = $(this).val();
+    var message = $('#AABox textarea[name="'+name+'"]').val();
+    message = message.replace(/\r\n/g, "\n");
+    message = message.replace(/\r/g, "\n");
+    if (message.length <= 0) {
+      return;
+    }
+    socket.post('/chat/say', {'chatterId':<%= id %>, 'message':message}, function(res){});
+  };
+
+$('#panel input').click(postAA);
+
+  $('#AAForm textarea').dblclick(function() {
+    var message = $(this).val();
+    var cnt = $('#AABox').find('textarea').length;
+    if (message.length <= 0) {
+      return;
+    }
+    $('#AABox').append('<textarea name="AA'+cnt+'" readonly>'+message+cnt+'</textarea>');
+  });
+
+
   $('#send').click(function() {
     var message = $('#message').val();
     if (message.length <= 0) {
