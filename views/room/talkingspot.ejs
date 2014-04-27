@@ -219,7 +219,7 @@
 <div id="movebar">
   <p>操作バー</p>
   <div class="output">
-    <div id="panel" class="widget">
+    <div id="panel" class="widget" style="clear: left; float: left;">
       <input type="button" value="AA0">
       <input type="button" value="AA1">
       <input type="button" value="AA2">
@@ -237,9 +237,15 @@ poyo</textarea>
 クリックで編集
 ダブルクリックで追加</textarea>
       </div>
+   </div>
+<!--      <select name="fontsize">
+         <option val="28">特大</font>
+         <option val="20">大</font>
+         <option selected val="14">中</font>
+         <option val="12">小</font>
+      </select>-->
     <input type="text" id="message" size="50">
     <input type="button" id="send" value="コメント">
-   </div>
   </div>
   
   <p>&nbsp;</p>
@@ -260,11 +266,18 @@ function add_comment(comment) {
 var mq_seq = 0;
 function add_marquee(comment) {
   var main_box = $('#movie');
-  var pos = Math.floor(Math.random() * 20 + 80);
-  var speed = Math.floor(Math.random() * 6 + 3);
+  var pos = Math.floor(Math.random() * 200 + 100);
+  var speed = Math.floor(Math.random() * 200 + 3000);
+  var fontsize = [16, 20, 24, 28][Math.floor(Math.random() * 4)];
   var id = 'mq_' + (++mq_seq);
   comment = comment.replace(/\n/g, "<br />");
-  main_box.append('<marquee scrollamount="' + speed + '" id="' + id + '" class="left_to_right" loop="1" style="top:' + pos + 'px;">' + comment + '</marquee>');
+  var cont = '<div id="' + id + '">' + comment + '</div>';
+  main_box.append(cont);
+  var wid = $('#movie').width();
+  $('#'+id).offset({top:pos, left:wid});
+  $('#'+id).css("fontSize", fontsize);
+  $('#'+id).animate({"top": "+=0px", "left": "-="+speed+"px"}, 30000, 'linear');
+  //main_box.append('<marquee scrollamount="' + speed + '" id="' + id + '" class="left_to_right" loop="1" style="top:' + pos + 'px;">' + comment + '</marquee>');
   setTimeout(function() {
     $('#'+id).remove();
   }, 60000);
