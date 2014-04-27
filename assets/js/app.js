@@ -7,8 +7,7 @@
  * Feel free to change none, some, or ALL of this file to fit your needs!
  */
 
-
-(function (io) {
+ (function (io) {
 
   // as soon as this file is loaded, connect automatically, 
   var socket = io.connect();
@@ -57,7 +56,7 @@
   // Simple log function to keep the example simple
   function log () {
     if (typeof console !== 'undefined') {
-      console.log.apply(console, arguments);
+      socket.get("/", function (response) { console.log(response); })
     }
   }
   
