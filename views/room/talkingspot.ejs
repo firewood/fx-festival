@@ -197,17 +197,27 @@
 <div id="movebar">
   <p>操作バー</p>
   <div class="output">
-    <div id="sendAA">AA
-     <textarea name="hoge" readonly>クリックで出る</textarea>
-     <textarea name="JI" readonly>poyo
+    <div id="panel" class="widget">
+      <input type="button" value="AA0">
+      <input type="button" value="AA1">
+      <input type="button" value="AA2">
+      <div id="AABox" style="display:none;">
+        <textarea name="AA0" readonly>クリックで出る</textarea>
+        <textarea name="AA1" readonly>poyo
 poyo
 poyo</textarea>
-     <textarea name="custom" id="custom">好きなAA
+        <textarea name="AA2" readonly>poyo
+poyo
+poyo</textarea>
+      </div>
+      <div id="AAForm" style="display:none;">
+        <textarea name="custom" id="custom">好きなAA
 クリックで編集
-ダブルクリックで出る</textarea>
-    </div>
+ダブルクリックで追加</textarea>
+      </div>
     <input type="text" id="message" size="50">
     <input type="button" id="send" value="コメント">
+   </div>
   </div>
   
   <p>&nbsp;</p>
@@ -256,32 +266,27 @@ $(function() {
     }
   });
 
-/*
-  $('#sendAA hover').hover(function() {
-    },
-    function() {
-
-    }
-  );
-*/
-
-  $('#sendAA textarea:not(#custom)').click(function() {
-    var message = $(this).val();
+var postAA = 
+function() {
+    var name = $(this).val();
+    var message = $('#AABox textarea[name="'+name+'"]').val();
     message = message.replace(/\r\n/g, "\n");
     message = message.replace(/\r/g, "\n");
     if (message.length <= 0) {
       return;
     }
     socket.post('/chat/say', {'chatterId':<%= id %>, 'message':message}, function(res){});
-  });
-  $('#sendAA #custom').dblclick(function() {
+  };
+
+$('#panel input').click(postAA);
+
+  $('#AAForm textarea').dblclick(function() {
     var message = $(this).val();
-    message = message.replace(/\r\n/g, "\n");
-    message = message.replace(/\r/g, "\n");
+    var cnt = $('#AABox').find('textarea').length;
     if (message.length <= 0) {
       return;
     }
-    socket.post('/chat/say', {'chatterId':<%= id %>, 'message':message}, function(res){});
+    $('#AABox').append('<textarea name="AA'+cnt+'" readonly>'+message+cnt+'</textarea>');
   });
 
 
