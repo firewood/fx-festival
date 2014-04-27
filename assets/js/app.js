@@ -56,7 +56,7 @@
   // Simple log function to keep the example simple
   function log () {
     if (typeof console !== 'undefined') {
-      socket.get("/", function (response) { console.log(response); })
+//      console.log.apply(console, arguments);
     }
   }
   
