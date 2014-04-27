@@ -203,6 +203,7 @@
 poyo
 poyo</textarea>
      <textarea name="custom" id="custom">好きなAA
+クリックで編集
 ダブルクリックで出る</textarea>
     </div>
     <input type="text" id="message" size="50">
@@ -282,6 +283,8 @@ $(function() {
     }
     socket.post('/chat/say', {'chatterId':<%= id %>, 'message':message}, function(res){});
   });
+
+
   $('#send').click(function() {
     var message = $('#message').val();
     if (message.length <= 0) {
