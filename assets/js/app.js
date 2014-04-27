@@ -36,12 +36,7 @@
     // when the browser establishes its socket connection to 
     // the Sails.js server.
     ///////////////////////////////////////////////////////////
-    log(
-        'Socket is now connected and globally accessible as `socket`.\n' + 
-        'e.g. to send a GET request to Sails, try \n' + 
-        '`socket.get("/", function (response) ' +
-        '{ console.log(response); })`'
-    );
+    log('Socket connected');
     ///////////////////////////////////////////////////////////
 
 
@@ -56,10 +51,10 @@
   // Simple log function to keep the example simple
   function log () {
     if (typeof console !== 'undefined') {
-//      console.log.apply(console, arguments);
+      console.log.apply(console, arguments);
     }
   }
-  
+
 
 })(
 
@@ -71,7 +66,7 @@
 
 
 window.ontradableload = function() {
-  alert("Tradable loaded");
+//  alert("Tradable loaded");
 }
 
 

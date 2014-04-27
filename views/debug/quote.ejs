@@ -1,0 +1,603 @@
+
+<link href='/styles/main.css' rel='stylesheet'/>
+<script src="/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="/amcharts/serial.js" type="text/javascript"></script>
+
+<div id="infobar">
+  <div id="infobar01">
+    <p>Your ID: <%= id %></p>
+  </div>
+  <div id="infobar02">
+    <div id="infobox">
+      <div id="nushi">
+        <p>放送主名</p>
+      </div>
+      <div id="count">
+        <div id="viewcount">
+          <p>視聴者数</p>
+        </div>
+        <div id="comcount">
+          <p>コメント数</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="main">
+  <div id="movie">
+  </div>
+
+  <div id="kairu_box">
+  </div>
+  <div id="rightbar">
+  <div id="nav">
+    <ul>
+      <li><a href="#comment">コメント</a></li>
+      <li><a href="#execution">執行</a></li>
+      <li><a href="#vote">投票</a></li>
+      <li><a href="#setup">設定</a></li>
+      </ul>
+  </div>
+  <div id="comments_box">
+  <div class="page" id="comment">
+    <div>comment</div>
+    <div id="comments" class="comments">
+      <table>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page" id="execution">
+    <p>execution</p>
+    <p>&nbsp;</p>
+    <p>USD/JPY</p>
+    <form name="form1" method="post" action="">
+      <p>
+        <input name="textfield" type="text" id="textfield" size="8">
+        <label for="textfield">×1000</label>
+        <input type="submit" name="button" id="button" value="　　C　　">
+      </p>
+      <p>
+        <input type="submit" name="button2" id="button2" value="500">
+        <input type="submit" name="button3" id="button3" value="100">
+        <input type="submit" name="button4" id="button4" value="50">
+        <input type="submit" name="button5" id="button5" value="10">
+        <input type="submit" name="button6" id="button6" value="1">
+      </p>
+    </form>
+    <p>&nbsp;</p>
+        <div id="short">
+          <div id="shortb">
+            <p id="uri">売</p>
+            <p>83.<strong>37</strong>5</p>
+            <p id="urisan">▼          </p>
+          </div>
+          <p>安値82.950</p>
+        </div>
+    <div id="long">
+      <div id="longb">
+        <p id="kai">買</p>
+        <p>83.<strong>48</strong>3</p>
+        <p id="kaisan">▼</p>
+      </div>
+      <p>高値83.483</p>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div class="page" id="vote">
+    <p>vote</p>
+    <p>&nbsp;</p>
+    <p>指標発表まで</p>
+    <p>残り<strong>１５分</strong></p>
+    <p>&nbsp;</p>
+    <p>あなたならどちらにかける？！</p>
+    <p>&nbsp;</p>
+    <p><strong>買い</strong>　or　<strong>売り</strong></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>今日予定の指標</p>
+    <p>&nbsp;</p>
+    <p>・18:00　消費者信頼感指数</p>
+    <p>・19:30　新築住宅販売件数</p>
+    <p>・21:00　フィラデルフィア連銀景況指数</p>
+    <p>・21:00　景気先行指標総合指数 </p>
+  </div>
+  <div class="page" id="setup">
+    <p>setup</p>
+    <p>&nbsp;</p>    
+    <p>基本設定</p>
+    <form name="form2" method="post" action="">
+      <p>
+        <input type="checkbox" name="checkbox2" id="checkbox2">
+        <label for="checkbox2">番組切り替えボタンを非表示にする</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox3" id="checkbox3">
+        <label for="checkbox3">放送中のお知らせを表示しない</label>
+        </p>
+      <p>
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label for="checkbox">コメントの描画を滑らかにする</label>
+      </p>
+    </form>
+    <p>&nbsp;</p>
+    <p>コメント設定</p>
+    <form name="form3" method="post" action="">
+      <p>
+        <input type="checkbox" name="checkbox4" id="checkbox4">
+        <label for="checkbox4">NG設定を利用する</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox5" id="checkbox5">
+        <label for="checkbox5">匿名(184)コメントで投稿する</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox6" id="checkbox6">
+        <label for="checkbox6">匿名(184)コメントを表示しない</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox7" id="checkbox7">
+        <label for="checkbox7">バックステージパスコメント常に表示</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox8" id="checkbox8">
+        <label for="checkbox8">バックステージパスコメントをNG設定</label>
+      </p>
+    </form>
+    <p>&nbsp;</p>
+    <p>プレミアム会員限定設定</p>
+    <form name="form4" method="post" action="">
+      <p>
+        <input type="checkbox" name="checkbox9" id="checkbox9">
+        <label for="checkbox9">広告を表示しない</label>
+      </p>
+      <p>
+        <input type="checkbox" name="checkbox10" id="checkbox10">
+        <label for="checkbox10">拡大時にモニターサイズで拡大する</label>
+      </p>
+    </form>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>
+  </div>
+</div>
+<div id="movebar">
+  <p>操作バー</p>
+  <div class="output">
+    <input type="text" id="message" size="50">
+    <input type="button" id="send" value="コメント">
+  </div>
+  
+  <p>&nbsp;</p>
+</div>
+
+
+<div>
+  <input type="text" id="startDate">-<input type="text" id="endDate">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">//<!--
+var user_id = <%= id %>;
+var symbol = 'USD/JPY';
+var chart;
+var graph;
+
+function get_quote() {
+  if (typeof tradable == "undefined") return;
+
+//  log({'msg':'get quote'});
+
+
+
+  tradable.quote.get(symbol, function(Quote) {
+//    log({'msg':'quote.get: ' + JSON.stringify(Quote)});
+    log('quote.get', Quote);
+  });
+
+
+}
+
+
+function get_account_snapshot() {
+  if (typeof tradable == "undefined") return;
+  log('getting account.getSnapshot', "");
+  var account = tradable.account.getSnapshot();
+  log('account.getSnapshot', JSON.stringify(account));
+  log('done', "");
+}
+
+
+function set_quote_update() {
+  if (typeof tradable == "undefined") return;
+  log('setting quote update', "");
+  tradable.quote.onUpdate(symbol, function(Quote) {
+//    log({'msg':'quote.onUpdate: ' + JSON.stringify(Quote)});
+    log('quote.onUpdate', Quote);
+  });
+  log('done', "");
+}
+
+function set_pricebook_update() {
+  if (typeof tradable == "undefined") return;
+  log('setting priceBook update', "");
+  tradable.priceBook.onUpdate(symbol, function(PriceBook) {
+//    log({'msg':'priceBook.onUpdate: ' + JSON.stringify(PriceBook)});
+    log('priceBook.onUpdate', PriceBook);
+  });
+  log('done', "");
+}
+
+function set_order_update() {
+  if (typeof tradable == "undefined") return;
+  log('setting order update', "");
+  tradable.order.onUpdate(function(OrderUpdateEvent) {
+    log('order.onUpdate', JSON.stringify(OrderUpdateEvent));
+//    log('order.onUpdate', OrderUpdateEvent);
+  });
+  log('done', "");
+}
+
+function set_position_update() {
+  if (typeof tradable == "undefined") return;
+  log('setting position update', "");
+  tradable.position.onUpdate(function(PositionUpdateEvent) {
+//    log({'msg':'position.onUpdate: ' + JSON.stringify(PositionUpdateEvent)});
+    log('position.onUpdate', PositionUpdateEvent);
+  });
+  log('done', "");
+}
+
+function set_trade_update() {
+  if (typeof tradable == "undefined") return;
+  log('setting trade update', "");
+  tradable.trade.onUpdate(function(TradeUpdateEvent) {
+//    log({'msg':'trade.onUpdate: ' + JSON.stringify(TradeUpdateEvent)});
+    log('trade.onUpdate', TradeUpdateEvent);
+  });
+  log('done', "");
+}
+
+function set_historic_update(historicSubscriptionProperties) {
+  if (typeof tradable == "undefined") return;
+  log('setting historic update', historicSubscriptionProperties);
+  tradable.historic.onUpdate(historicSubscriptionProperties, function(historicData) {
+//    log('historic.onUpdate', JSON.stringify(historicData));
+//    log('historic.onUpdate', historicData);
+
+	if (!chart) {
+
+		setupChart();
+		return;
+
+	}
+
+	if (!historicData.candles) return;
+
+	var candles = historicData.candles;
+
+    log('candles', JSON.stringify(candles));
+
+
+
+	if (chart.dataProvider.length > 100) {
+		chart.dataProvider.shift();
+	}
+
+
+	chart.dataProvider.push({
+		'date':new Date().getTime(),
+		"open":79.854,
+		"close":79.835,
+		"low":79.833,
+		"high":79.873
+	});
+	chart.validateData();
+
+
+/*
+		a = [];
+		b = {
+			"date":1398574800000,
+			"open":79.854,
+			"close":79.835,
+			"low":79.833,
+			"high":79.873
+		};
+		a.push(b);
+	chart.dataProvider = a;
+	chart.validateData();
+
+*/
+
+
+
+
+
+  });
+  log('done', "");
+}
+
+$(function() {
+  window.log = function(func, obj) {
+//    socket.post('/dump', {'id':id,'func':func,'obj':JSON.stringify(obj)}, function(res){});
+    socket.post('/dump', {'id':user_id,'func':func,'obj':obj}, function(res){});
+  };
+  socket.on('message', function(msg) {
+
+  });
+  socket.get('/debug/connect', {'userID':user_id}, function(res) {
+
+
+    get_quote();
+
+
+
+    get_account_snapshot();
+
+
+    set_quote_update();
+    set_pricebook_update();
+    set_order_update();
+    set_position_update();
+    set_trade_update();
+
+
+    var historicSubscriptionProperties = {
+      'symbol':symbol,
+      'period':'1h',
+//      'from':new Date().getTime() - 2*86400*1000
+      'from':new Date().getTime() - 3600*1000
+    };
+    set_historic_update(historicSubscriptionProperties);
+
+
+
+
+
+
+
+//  setupChart();
+
+
+  });
+});
+
+
+
+function setupChart() {
+
+  console.log('setup chart...');
+
+            var graphType = "candlestick";
+            var maxCandlesticks = 100;
+
+            var dataString = "2008-05-02,180.19,181.92,178.55,180.94\n2008-05-01,174.96,180.00,174.86,180.00";
+            var chartData = [];
+
+            AmCharts.ready(function () {
+                // first parse data string      
+//                parseData();
+
+
+		chartData = [];
+
+		chartData.push({
+			'date':new Date().getTime(),
+			"open":79.854,
+			"close":79.835,
+			"low":79.833,
+			"high":79.873
+                    });
+
+
+
+
+                // SERIAL CHART
+                chart = new AmCharts.AmSerialChart();
+                chart.pathToImages = "/amcharts/images/";
+                chart.dataProvider = chartData;
+                chart.categoryField = "date";
+                // listen for dataUpdated event ad call "zoom" method then it happens
+                chart.addListener('dataUpdated', zoomChart);
+                // listen for zoomed event andcall "handleZoom" method then it happens
+                chart.addListener('zoomed', handleZoom);
+
+                // AXES
+                // category
+                var categoryAxis = chart.categoryAxis;
+                categoryAxis.parseDates = true; // as our data is date-based, we set this to true
+                categoryAxis.minPeriod = "DD"; // our data is daily, so we set minPeriod to "DD"
+                categoryAxis.dashLength = 1;
+                categoryAxis.tickLenght = 0;
+                categoryAxis.inside = true;
+
+                // value
+                var valueAxis = new AmCharts.ValueAxis();
+                valueAxis.dashLength = 1;
+                valueAxis.axisAlpha = 0;
+                chart.addValueAxis(valueAxis);
+
+                // GRAPH
+                graph = new AmCharts.AmGraph();
+                graph.title = "Price:";
+                // as candlestick graph looks bad when there are a lot of candlesticks, we set initial type to "line"
+                graph.type = "line";
+                // graph colors
+                graph.lineColor = "#7f8da9";
+                graph.fillColors = "#7f8da9";
+                graph.negativeLineColor = "#db4c3c";
+                graph.negativeFillColors = "#db4c3c";
+                graph.fillAlphas = 1;
+                // candlestick graph has 4 fields - open, low, high, close
+                graph.openField = "open";
+                graph.highField = "high";
+                graph.lowField = "low";
+                graph.closeField = "close";
+                graph.balloonText = "Open:<b>[[open]]</b><br>Low:<b>[[low]]</b><br>High:<b>[[high]]</b><br>Close:<b>[[close]]</b><br>";
+                // this one is for "line" graph type
+                graph.valueField = "close";
+
+                chart.addGraph(graph);
+
+                // CURSOR                
+//                var chartCursor = new AmCharts.ChartCursor();
+//                chart.addChartCursor(chartCursor);
+
+                // SCROLLBAR
+                var chartScrollbar = new AmCharts.ChartScrollbar();
+                chartScrollbar.scrollbarHeight = 30;
+                chartScrollbar.graph = graph; // as we want graph to be displayed in the scrollbar, we set graph here
+                chartScrollbar.graphType = "line"; // we don't want candlesticks to be displayed in the scrollbar                
+                chartScrollbar.gridCount = 4;
+                chartScrollbar.color = "#FFFFFF";
+                chart.addChartScrollbar(chartScrollbar);
+
+                // WRITE
+                chart.write("movie");
+
+console.log("done");
+            });
+
+
+            // this method is called when chart is first inited as we listen for "dataUpdated" event
+            function zoomChart() {
+                // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+                chart.zoomToIndexes(chartData.length - 7, chartData.length - 1);
+            }
+
+            // this methid is called each time the selected period of the chart is changed
+            function handleZoom(event) {
+                var startDate = event.startDate;
+                var endDate = event.endDate;
+                document.getElementById("startDate").value = AmCharts.formatDate(startDate, "DD/MM/YYYY");
+                document.getElementById("endDate").value = AmCharts.formatDate(endDate, "DD/MM/YYYY");
+
+                // as we also want to change graph type depending on the selected period, we call this method
+                changeGraphType(event);
+            }
+
+            // changes graph type to line/candlestick, depending on the selected range
+            function changeGraphType(event) {
+                var startIndex = event.startIndex;
+                var endIndex = event.endIndex;
+
+                if (endIndex - startIndex > maxCandlesticks) {
+                    // change graph type
+                    if (graph.type != "line") {
+                        graph.type = "line";
+                        graph.fillAlphas = 0;
+                        chart.validateNow();
+                    }
+                } else {
+                    // change graph type
+                    if (graph.type != graphType) {
+                        graph.type = graphType;
+                        graph.fillAlphas = 1;
+                        chart.validateNow();
+                    }
+                }
+            }
+
+            // Parse data
+            function parseData() {
+                // split data string into array
+                var rowArray = dataString.split("\n");
+                // loop through this array and create data items
+                for (var i = rowArray.length - 1; i > -1; i--) {
+                    var row = rowArray[i].split(",");
+                    var dateArray = row[0].split("-");
+                    // we have to subtract 1 from month, as months in javascript are zero-based
+                    var date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]));
+                    var open = row[1];
+                    var high = row[2];
+                    var low = row[3];
+                    var close = row[4];
+
+                    chartData.push({
+                        date: date,
+                        open: open,
+                        high: high,
+                        low: low,
+                        close: close
+                    });
+                }
+            }
+
+
+            // this method converts string from input fields to date object 
+            function stringToDate(str) {
+                var dArr = str.split("/");
+                var date = new Date(Number(dArr[2]), Number(dArr[1]) - 1, dArr[0]);
+                return date;
+            }
+
+            // this method is called when user changes dates in the input field
+            function changeZoomDates() {
+                var startDateString = document.getElementById("startDate").value;
+                var endDateString = document.getElementById("endDate").value;
+                var startDate = stringToDate(startDateString);
+                var endDate = stringToDate(endDateString);
+                chart.zoomToDates(startDate, endDate);
+            }
+
+
+}
+
+
+//setupChart();
+
+
+
+function debug_update() {
+	if (!chart) return;
+		a = [];
+		b = {
+			"date":1398574800000,
+			"open":79.854,
+			"close":79.835,
+			"low":79.833,
+			"high":79.873
+		};
+		a.push(b);
+	chart.dataProvider = a;
+	chart.validateData();
+}
+
+//setTimeout(function(){ debug_update(); }, 2000);
+
+
+
+
+//--></script>
