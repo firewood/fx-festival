@@ -57,6 +57,14 @@ body {
 	border: 1px solid #000;
 	height: 55px;
 }
+
+#news_bar {
+	width: 720px;
+	float: left;
+	border: 1px solid black;
+	height: 55px;
+}
+
 #infobar02 {
 	width: 238px;
 	float: right;

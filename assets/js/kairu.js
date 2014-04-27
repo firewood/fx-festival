@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('#kairu_box').hide();
     $('#kairu_search').live('keypress', function(e){
         if (e.keyCode == 13) {
             var keyword = $('#kairu_search').val();
