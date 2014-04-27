@@ -66,7 +66,7 @@
 
 
 window.ontradableload = function() {
-  alert("Tradable loaded");
+//  alert("Tradable loaded");
 }
 
 
