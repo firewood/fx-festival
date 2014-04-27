@@ -184,6 +184,11 @@
 <div id="movebar">
   <p>操作バー</p>
   <div class="output">
+    <div id="sendAA">AA
+     <textarea readonly>fa<br>faf<br>fafa</textarea>
+     <textarea readonly>JI<br>JIJ</textarea>
+     <textarea>JI\nJIJ</textarea>
+    </div>
     <input type="text" id="message" size="50">
     <input type="button" id="send" value="コメント">
   </div>
@@ -209,6 +214,7 @@ function add_marquee(comment) {
   var pos = Math.floor(Math.random() * 20 + 80);
   var speed = Math.floor(Math.random() * 6 + 3);
   var id = 'mq_' + (++mq_seq);
+  comment = comment.replace(/\n/g, "&lt;br /&gt;<br />");
   main_box.append('<marquee scrollamount="' + speed + '" id="' + id + '" class="left_to_right" loop="1" style="top:' + pos + 'px;">' + comment + '</marquee>');
   setTimeout(function() {
     $('#'+id).remove();
@@ -226,9 +232,25 @@ $(function() {
     } else if (model == 'chat') {
       var id = msg['data']['id'];
       var message = msg['data']['message'];
-      add_comment('' + id + ':' + message);
+      message.split('\n').forEach(function(line){
+        add_comment('' + id + ':' + line);
+      });
       add_marquee(message);
     }
+  });
+  $('#sendAA hover').hover(function() {
+    },
+    function() {
+
+    }
+  );
+  $('#sendAA textarea').click(function() {
+    var message = $('#sendAA textarea').val();
+    message = message.replace(/<br \/>/g, "\n");
+    if (message.length <= 0) {
+      return;
+    }
+    socket.post('/chat/say', {'chatterId':<%= id %>, 'message':message}, function(res){});
   });
   $('#send').click(function() {
     var message = $('#message').val();
